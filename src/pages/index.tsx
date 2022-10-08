@@ -4,6 +4,7 @@ import { useContext } from 'react'
 import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query'
 import Web3 from 'web3'
 import { Web3Context } from '../api/Web3Provider'
+import { Button } from '@mantine/core';
 
 const Home: NextPage = () => {
   const web3 = useContext(Web3Context)
@@ -21,6 +22,9 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
+        <Button>
+          Settings
+        </Button>
         <pre>
           {lastBlock && JSON.stringify(lastBlock, null, 2)}
         </pre>
