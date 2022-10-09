@@ -1,18 +1,8 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { useContext } from 'react'
-import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query'
-import Web3 from 'web3'
-import { Web3Context } from '../api/Web3Provider'
-import { Button } from '@mantine/core';
+import { BlocksTable } from '../components/BlocksTable' 
 
 const Home: NextPage = () => {
-  const web3 = useContext(Web3Context)
-  const { data: lastBlockNumber } = useQuery(['lastBlockNumber'], () => web3.eth.getBlockNumber())
-  const { data: lastBlock } = useQuery(['lastBlock'], () => web3.eth.getBlock(lastBlockNumber as number), {
-    enabled: !!lastBlockNumber
-  })
-
   return (
     <div>
       <Head>
@@ -22,11 +12,8 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
-        <Button>
-          Settings
-        </Button>
         <pre>
-          {lastBlock && JSON.stringify(lastBlock, null, 2)}
+          <BlocksTable/>
         </pre>
       </main>
 
