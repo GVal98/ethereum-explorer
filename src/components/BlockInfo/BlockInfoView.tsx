@@ -1,8 +1,9 @@
-import { Table } from '@mantine/core'
+import { useState } from 'react'
+import { Button, Collapse, Table, List } from '@mantine/core'
 
 interface BlockInfoViewProps {
   blockNumber: number,
-  transactionsCount: number,
+  transactions: string[],
   dateTime: string,
   miner: string,
   bytesSize: number,
@@ -11,6 +12,12 @@ interface BlockInfoViewProps {
 }
 
 function BlockInfoView(props: BlockInfoViewProps) {
+  const [isTransactionsOpened, setIsTransactionsOpened] = useState(false)
+
+  let transactionsList = props.transactions.map(transaction => 
+      <List.Item key={transaction}>{transaction}</List.Item>
+  )
+
   return (
     <Table>
       <tbody>
@@ -19,8 +26,14 @@ function BlockInfoView(props: BlockInfoViewProps) {
           <td>{props.blockNumber}</td>
         </tr>
         <tr>
-          <td>Transactions count</td>
-          <td>{props.transactionsCount}</td>
+          <td>Transactions</td>
+          <td>
+            {props.transactions.length} transactions
+            <Button ml={'xs'} compact variant="subtle" onClick={() => setIsTransactionsOpened(o => !o)}>Show</Button>
+            <Collapse in={isTransactionsOpened}>
+              {transactionsList}
+            </Collapse>
+          </td>
         </tr>
         <tr>
           <td>Block time</td>

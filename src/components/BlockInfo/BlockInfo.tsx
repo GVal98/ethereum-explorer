@@ -15,7 +15,7 @@ function BlockInfo(props: BlockInfoProps) {
   return (
     <BlockInfoView 
       blockNumber={props.blockNumber}
-      transactionsCount={data?.transactions.length}
+      transactions={data?.transactions}
       dateTime={(new Date(+data?.timestamp * 1000)).toLocaleString()}
       miner={data.miner}
       bytesSize={data.size}
