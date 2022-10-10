@@ -7,7 +7,7 @@ interface BlocksTableViewProps {
 
 function BlocksTableView(props: BlocksTableViewProps) {
   return (
-    <Table>
+    <Table highlightOnHover>
       <thead>
         <tr>
           <th>Block number</th>

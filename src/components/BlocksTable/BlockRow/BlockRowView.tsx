@@ -1,3 +1,6 @@
+import Link from 'next/link'
+import style from './BlockRow.module.css'
+
 interface BlockRowViewProps {
   blockNumber: number,
   transactionCount: number,
@@ -6,11 +9,13 @@ interface BlockRowViewProps {
 
 function BlockRowView(props: BlockRowViewProps) {
   return (
-    <tr>
-      <td>{props.blockNumber}</td>
-      <td>{props.transactionCount}</td>
-      <td>{props.dateTime}</td>
-    </tr>
+    <Link href={`/blocks/${props.blockNumber}`}>
+      <tr className={style.row}>
+        <td>{props.blockNumber}</td>
+        <td>{props.transactionCount}</td>
+        <td>{props.dateTime}</td>
+      </tr>
+    </Link>
   )
 }
 
