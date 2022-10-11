@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { Button, Collapse, Table, List } from '@mantine/core'
+import Link from 'next/link'
+import { Button, Collapse, Table, List, Box } from '@mantine/core'
 
 interface BlockInfoViewProps {
   blockNumber: number,
@@ -15,7 +16,13 @@ function BlockInfoView(props: BlockInfoViewProps) {
   const [isTransactionsOpened, setIsTransactionsOpened] = useState(false)
 
   let transactionsList = props.transactions.map(transaction => 
-      <List.Item key={transaction}>{transaction}</List.Item>
+    <Link key={transaction} href={`/transactions/${transaction}`}>
+      <Box>
+        <Button compact variant="subtle">
+          <List.Item>{transaction}</List.Item>
+        </Button>
+      </Box>
+    </Link>
   )
 
   return (
@@ -31,7 +38,7 @@ function BlockInfoView(props: BlockInfoViewProps) {
             {props.transactions.length} transactions
             <Button ml={'xs'} compact variant="subtle" onClick={() => setIsTransactionsOpened(o => !o)}>Show</Button>
             <Collapse in={isTransactionsOpened}>
-              {transactionsList}
+              <List>{transactionsList}</List>
             </Collapse>
           </td>
         </tr>
