@@ -36,7 +36,7 @@ function BlockInfoView(props: BlockInfoViewProps) {
           <td>Transactions</td>
           <td>
             {props.transactions.length} transactions
-            <Button ml={'xs'} compact variant="subtle" onClick={() => setIsTransactionsOpened(o => !o)}>Show</Button>
+            <Button ml={'xs'} compact variant="light" onClick={() => setIsTransactionsOpened(o => !o)}>Show</Button>
             <Collapse in={isTransactionsOpened}>
               <List>{transactionsList}</List>
             </Collapse>

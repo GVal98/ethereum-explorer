@@ -1,4 +1,5 @@
-import { Table } from '@mantine/core'
+import Link from 'next/link'
+import { Table, Button } from '@mantine/core'
 
 interface TransactionInfoViewProps {
   transactionHash: string,
@@ -18,7 +19,11 @@ function TransactionInfoView(props: TransactionInfoViewProps) {
         </tr>
         <tr>
           <td>Block number</td>
-          <td>{props.blockNumber}</td>
+          <td>
+            <Link href={`/blocks/${props.blockNumber}`}>
+              <Button compact variant="light">{props.blockNumber}</Button>
+            </Link>
+          </td>
         </tr>
         <tr>
           <td>Sender</td>
