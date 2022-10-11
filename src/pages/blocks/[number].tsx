@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { BlockInfo } from '../../components/BlockInfo'
 
-const Home: NextPage = () => {
+const BlockPage: NextPage = () => {
   const router = useRouter()
   const { number: blockNumber } = router.query
 
@@ -22,4 +22,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default BlockPage
