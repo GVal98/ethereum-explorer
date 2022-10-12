@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { Button, Collapse, Table, List, Box } from '@mantine/core'
+import { Address } from '../common/Address'
 
 interface BlockInfoViewProps {
   blockNumber: number,
@@ -48,7 +49,7 @@ function BlockInfoView(props: BlockInfoViewProps) {
         </tr>
         <tr>
           <td>Miner</td>
-          <td>{props.miner}</td>
+          <td><Address address={props.miner}/></td>
         </tr>
         <tr>
           <td>Size</td>
