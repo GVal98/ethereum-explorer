@@ -1,11 +1,11 @@
 /* eslint-disable react/display-name */
 import { forwardRef, useContext, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { Web3Context } from '../../api/Web3Provider'
-import { SearchView } from './SearchView'
+import { Web3Context } from '../../../api/Web3Provider'
 import { Autocomplete, SelectItemProps } from '@mantine/core'
 import Link from 'next/link'
-import { Address } from '../common/Address'
+import { Address } from '../../common/Address'
+import { useRouter } from 'next/router'
 
 interface SearchProps {
   
@@ -16,9 +16,9 @@ const ResultBlock = forwardRef<HTMLDivElement, SelectItemProps>(
   ({value, ...others} : SelectItemProps, ref) => {
     return (
       <Link href={'/blocks/' + value}>
-      <div ref={ref} {...others} onMouseDown={() => {}}>
-          <>Block {value}</>
-      </div>
+        <div ref={ref} {...others} onMouseDown={() => {}}>
+            <>Block {value}</>
+        </div>
     </Link>
     )
   }
@@ -49,6 +49,7 @@ const ResultAddress = forwardRef<HTMLDivElement, SelectItemProps>(
 
 
 function Search(props: SearchProps) {
+  const router = useRouter()
   const [value, setValue] = useState('')
   
   const web3 = useContext(Web3Context)
@@ -86,7 +87,7 @@ function Search(props: SearchProps) {
 
 
   return (
-    <Autocomplete
+    <Autocomplete key={router.asPath}
       value={value}
       onChange={setValue}
       label="Search"

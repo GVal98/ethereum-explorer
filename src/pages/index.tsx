@@ -1,7 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { BlocksTable } from '../components/BlocksTable' 
-import { Search } from '../components/Search'
 
 const Home: NextPage = () => {
   return (
@@ -9,7 +8,6 @@ const Home: NextPage = () => {
       <Head>
         <title>ETH explorer</title>
       </Head>
-      <Search/>
       <BlocksTable/>
     </>
   )
