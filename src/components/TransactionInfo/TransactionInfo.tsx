@@ -11,12 +11,12 @@ function TransactionInfo(props: TransactionInfoProps) {
   const web3 = useContext(Web3Context)
   const { data } = useQuery(
     ['transaction', props.transactionHash],
-    () => web3.eth.getTransaction(props.transactionHash)
+    () => web3.eth.getTransaction(props.transactionHash),
   )
-  
+
   if (!data) return <>loading</>
   return (
-    <TransactionInfoView 
+    <TransactionInfoView
       transactionHash={props.transactionHash}
       blockNumber={data.blockNumber}
       sender={data.from}

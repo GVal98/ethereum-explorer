@@ -15,7 +15,7 @@ const BlockPage: NextPage = () => {
       </Head>
 
       <main>
-        <BlockInfo blockNumber={+blockNumber}/>
+        <BlockInfo blockNumber={+blockNumber} />
       </main>
 
     </div>

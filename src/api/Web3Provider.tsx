@@ -1,7 +1,7 @@
-import { createContext, ReactNode } from "react"
+import { createContext, ReactNode } from 'react'
 import Web3 from 'web3'
 
-const Web3Context = createContext(new Web3("https://cloudflare-eth.com"))
+const Web3Context = createContext(new Web3('https://cloudflare-eth.com'))
 
 interface Web3ProviderProps {
   web3Instance: Web3,
@@ -16,5 +16,4 @@ function Web3Provider({ web3Instance, children } : Web3ProviderProps) {
   )
 }
 
-
-export {Web3Context, Web3Provider}
+export { Web3Context, Web3Provider }

@@ -15,7 +15,7 @@ const TransactionPage: NextPage = () => {
       </Head>
 
       <main>
-        <TransactionInfo transactionHash={transactionHash.toString()}/>
+        <TransactionInfo transactionHash={transactionHash.toString()} />
       </main>
 
     </div>

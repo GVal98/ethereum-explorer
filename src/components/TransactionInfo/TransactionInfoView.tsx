@@ -28,11 +28,11 @@ function TransactionInfoView(props: TransactionInfoViewProps) {
         </tr>
         <tr>
           <td>Sender</td>
-          <td><Address address={props.sender}/></td>
+          <td><Address address={props.sender} /></td>
         </tr>
         <tr>
           <td>Receiver</td>
-          <td>{props.receiver && <Address address={props.receiver}/>}</td>
+          <td>{props.receiver && <Address address={props.receiver} />}</td>
         </tr>
         <tr>
           <td>Value sent</td>

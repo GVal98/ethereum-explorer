@@ -16,7 +16,7 @@ function BlockRow(props: BlockRowProps) {
     <BlockRowView
       blockNumber={data?.number}
       transactionCount={data?.transactions.length}
-      dateTime={(new Date(+data?.timestamp * 1000)).toLocaleString()}
+      dateTime={(new Date(+(data?.timestamp || 0) * 1000)).toLocaleString()}
     />
   )
 }

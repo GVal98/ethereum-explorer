@@ -1,9 +1,9 @@
-import { useContext, ReactNode, useState } from 'react'
+import { useContext, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
+import { Button } from '@mantine/core'
 import { Web3Context } from '../../api/Web3Provider'
 import { BlockRow } from './BlockRow'
 import { BlocksTableView } from './BlocksTableView'
-import { Button } from '@mantine/core'
 
 const defaultBlocksCount = 10
 
@@ -15,12 +15,14 @@ function BlocksTable() {
 
   if (!latestBlockNumber) return <>loading</>
 
-  let blockNumbers = new Array(blocksCount).fill(0).map((_, i) => latestBlockNumber - i)
-  let blockRows = blockNumbers.map(blockNumber => <BlockRow key={blockNumber} blockNumber={blockNumber}/>)
+  const blockNumbers = new Array(blocksCount).fill(0).map((_, i) => latestBlockNumber - i)
+  const blockRows = blockNumbers.map((blockNumber) => (
+    <BlockRow key={blockNumber} blockNumber={blockNumber} />
+  ))
 
   return (
     <>
-      <BlocksTableView blockRows={blockRows}/>
+      <BlocksTableView blockRows={blockRows} />
       <Button onClick={() => (setBlocksCount(blocksCount + defaultBlocksCount))}>Load more</Button>
     </>
   )

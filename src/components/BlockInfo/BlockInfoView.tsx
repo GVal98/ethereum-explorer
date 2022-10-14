@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import Link from 'next/link'
-import { Button, Collapse, Table, List, Box } from '@mantine/core'
+import {
+  Button, Collapse, Table, List, Box,
+} from '@mantine/core'
 import { Address } from '../common/Address'
 
 interface BlockInfoViewProps {
@@ -16,7 +18,7 @@ interface BlockInfoViewProps {
 function BlockInfoView(props: BlockInfoViewProps) {
   const [isTransactionsOpened, setIsTransactionsOpened] = useState(false)
 
-  let transactionsList = props.transactions.map(transaction => 
+  const transactionsList = props.transactions.map((transaction) => (
     <Link key={transaction} href={`/transactions/${transaction}`}>
       <Box>
         <Button compact variant="subtle">
@@ -24,7 +26,7 @@ function BlockInfoView(props: BlockInfoViewProps) {
         </Button>
       </Box>
     </Link>
-  )
+  ))
 
   return (
     <Table>
@@ -37,7 +39,7 @@ function BlockInfoView(props: BlockInfoViewProps) {
           <td>Transactions</td>
           <td>
             {props.transactions.length} transactions
-            <Button ml={'xs'} compact variant="light" onClick={() => setIsTransactionsOpened(o => !o)}>Show</Button>
+            <Button ml="xs" compact variant="light" onClick={() => setIsTransactionsOpened((o) => !o)}>Show</Button>
             <Collapse in={isTransactionsOpened}>
               <List>{transactionsList}</List>
             </Collapse>
@@ -49,7 +51,7 @@ function BlockInfoView(props: BlockInfoViewProps) {
         </tr>
         <tr>
           <td>Miner</td>
-          <td><Address address={props.miner}/></td>
+          <td><Address address={props.miner} /></td>
         </tr>
         <tr>
           <td>Size</td>

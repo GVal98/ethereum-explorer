@@ -11,11 +11,11 @@ function Address(props: AddressProps) {
   const web3 = useContext(Web3Context)
   const { data: balance } = useQuery(
     ['address', props.address],
-    () => web3.eth.getBalance(props.address)
+    () => web3.eth.getBalance(props.address),
   )
-  
+
   return (
-    <AddressView 
+    <AddressView
       address={props.address}
       ethBalance={balance ? +balance / 10e17 : null}
     />
