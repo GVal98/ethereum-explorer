@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import {
-  AppShell, Header, Group, ActionIcon, useMantineColorScheme, Title,
+  AppShell, Header, Group, ActionIcon, useMantineColorScheme, Title, Container,
 } from '@mantine/core'
 import Link from 'next/link'
 import styles from './Layout.module.css'
@@ -32,11 +32,10 @@ function Layout(props: LayoutProps) {
         main: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0] },
       })}
     >
-      <>
+      <Container size="xl">
         <Search />
         {props.children}
-      </>
-
+      </Container>
     </AppShell>
   )
 }

@@ -82,6 +82,7 @@ function Search() {
       placeholder="Block number, transaction hash or address"
       data={suggestions}
       itemComponent={ResultItem}
+      mb="xl"
     />
   )
 }

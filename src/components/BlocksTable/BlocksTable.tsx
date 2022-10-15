@@ -5,7 +5,7 @@ import { Web3Context } from '../../api/Web3Provider'
 import { BlockRow } from './BlockRow'
 import { BlocksTableView } from './BlocksTableView'
 
-const defaultBlocksCount = 10
+const defaultBlocksCount = 15
 
 function BlocksTable() {
   const [blocksCount, setBlocksCount] = useState(defaultBlocksCount)
