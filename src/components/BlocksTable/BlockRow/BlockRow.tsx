@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import { useQuery } from '@tanstack/react-query'
+import { Skeleton } from '@mantine/core'
 import { Web3Context } from '../../../api/Web3Provider'
 import { BlockRowView } from './BlockRowView'
 
@@ -11,7 +12,16 @@ function BlockRow(props: BlockRowProps) {
   const web3 = useContext(Web3Context)
   const { data } = useQuery(['block', props.blockNumber], () => web3.eth.getBlock(props.blockNumber))
 
-  if (!data) return <tr><td>loading</td></tr>
+  if (!data) {
+    return (
+      <BlockRowView
+        blockNumber={<Skeleton height={8} />}
+        transactionCount={<Skeleton height={8} />}
+        dateTime={<Skeleton height={8} />}
+      />
+    )
+  }
+
   return (
     <BlockRowView
       blockNumber={data?.number}

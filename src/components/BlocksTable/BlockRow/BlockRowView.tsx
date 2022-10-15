@@ -1,10 +1,11 @@
 import Link from 'next/link'
+import { ReactNode } from 'react'
 import style from './BlockRow.module.css'
 
 interface BlockRowViewProps {
-  blockNumber: number,
-  transactionCount: number,
-  dateTime: string
+  blockNumber: number | ReactNode,
+  transactionCount: number | ReactNode,
+  dateTime: string | ReactNode
 }
 
 function BlockRowView(props: BlockRowViewProps) {
