@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import { useQuery } from '@tanstack/react-query'
+import { Center, Loader } from '@mantine/core'
 import { Web3Context } from '../../api/Web3Provider'
 import { BlockInfoView } from './BlockInfoView'
 
@@ -11,7 +12,7 @@ function BlockInfo(props: BlockInfoProps) {
   const web3 = useContext(Web3Context)
   const { data } = useQuery(['block', props.blockNumber], () => web3.eth.getBlock(props.blockNumber))
 
-  if (!data) return <>loading</>
+  if (!data) return <Center><Loader /></Center>
   return (
     <BlockInfoView
       blockNumber={props.blockNumber}

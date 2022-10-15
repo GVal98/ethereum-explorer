@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }: AppProps<{ dehydratedState: DehydratedS
 
   return (
     <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
-      <MantineProvider withGlobalStyles withNormalizeCSS theme={{ colorScheme }}>
+      <MantineProvider withGlobalStyles withNormalizeCSS theme={{ colorScheme, loader: 'dots' }}>
         <Web3Provider web3Instance={web3}>
           <QueryClientProvider client={queryClient}>
             <Hydrate state={pageProps.dehydratedState}>

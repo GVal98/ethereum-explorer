@@ -15,9 +15,9 @@ function BlockRow(props: BlockRowProps) {
   if (!data) {
     return (
       <BlockRowView
-        blockNumber={<Skeleton height={8} />}
-        transactionCount={<Skeleton height={8} />}
-        dateTime={<Skeleton height={8} />}
+        blockNumber={props.blockNumber}
+        transactionCount={<Skeleton height={8} width={25} />}
+        dateTime={<Skeleton height={8} width={130} />}
       />
     )
   }

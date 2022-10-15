@@ -7,7 +7,7 @@ const TransactionPage: NextPage = () => {
   const router = useRouter()
   const { hash: transactionHash } = router.query
 
-  if (!transactionHash) return <>404</>
+  if (!transactionHash) return <></>
   return (
     <div>
       <Head>

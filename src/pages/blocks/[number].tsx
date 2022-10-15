@@ -7,7 +7,7 @@ const BlockPage: NextPage = () => {
   const router = useRouter()
   const { number: blockNumber } = router.query
 
-  if (!blockNumber) return <>404</>
+  if (!blockNumber) return <></>
   return (
     <div>
       <Head>

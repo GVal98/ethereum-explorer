@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import { useQuery } from '@tanstack/react-query'
+import { Center, Loader } from '@mantine/core'
 import { Web3Context } from '../../api/Web3Provider'
 import { TransactionInfoView } from './TransactionInfoView'
 
@@ -14,7 +15,7 @@ function TransactionInfo(props: TransactionInfoProps) {
     () => web3.eth.getTransaction(props.transactionHash),
   )
 
-  if (!data) return <>loading</>
+  if (!data) return <Center><Loader /></Center>
   return (
     <TransactionInfoView
       transactionHash={props.transactionHash}
