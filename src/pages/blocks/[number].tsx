@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { BlockInfo } from '../../components/BlockInfo'
+import { BlockInfo } from '@components/BlockInfo'
 
 const BlockPage: NextPage = () => {
   const router = useRouter()
@@ -9,16 +9,12 @@ const BlockPage: NextPage = () => {
 
   if (!blockNumber) return <></>
   return (
-    <div>
+    <>
       <Head>
         <title>Block {blockNumber}</title>
       </Head>
-
-      <main>
-        <BlockInfo blockNumber={+blockNumber} />
-      </main>
-
-    </div>
+      <BlockInfo blockNumber={+blockNumber} />
+    </>
   )
 }
 
