@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import { useQuery } from '@tanstack/react-query'
+import { ConvertWei } from 'utils/convertWei'
 import { Web3Context } from '../../../api/Web3Provider'
 import { AddressView } from './AddressView'
 
@@ -17,7 +18,7 @@ function Address(props: AddressProps) {
   return (
     <AddressView
       address={props.address}
-      ethBalance={balance ? +balance / 10e17 : null}
+      ethBalance={balance ? ConvertWei(balance) : null}
     />
   )
 }

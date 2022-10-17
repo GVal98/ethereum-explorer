@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { Skeleton } from '@mantine/core'
+import { formatTime } from 'utils/formatTime'
 import { Web3Context } from '../../../api/Web3Provider'
 import { BlockRowView } from './BlockRowView'
 
@@ -26,7 +27,7 @@ function BlockRow(props: BlockRowProps) {
     <BlockRowView
       blockNumber={data?.number}
       transactionCount={data?.transactions.length}
-      dateTime={(new Date(+(data?.timestamp || 0) * 1000)).toLocaleString()}
+      dateTime={formatTime(data?.timestamp)}
     />
   )
 }

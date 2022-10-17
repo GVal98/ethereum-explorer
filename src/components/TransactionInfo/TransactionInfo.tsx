@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { Center, Loader } from '@mantine/core'
+import { Loader } from '@common/Loader'
+import { ConvertWei } from 'utils/convertWei'
 import { Web3Context } from '../../api/Web3Provider'
 import { TransactionInfoView } from './TransactionInfoView'
 
@@ -15,14 +16,14 @@ function TransactionInfo(props: TransactionInfoProps) {
     () => web3.eth.getTransaction(props.transactionHash),
   )
 
-  if (!data) return <Center><Loader /></Center>
+  if (!data) return <Loader />
   return (
     <TransactionInfoView
       transactionHash={props.transactionHash}
       blockNumber={data.blockNumber}
       sender={data.from}
       receiver={data.to}
-      ethSent={+data.value / 10e17}
+      ethSent={ConvertWei(data.value)}
     />
   )
 }
