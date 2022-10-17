@@ -1,9 +1,8 @@
-import { ReactNode, useState } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
-import {
-  Button, Collapse, Table, List, Box, Title, Text,
-} from '@mantine/core'
-import { Address } from '../common/Address'
+import { Button, Collapse, Table, List, Box, Title } from '@mantine/core'
+import { TdTitle } from '@common/TdTitle'
+import { Address } from '@common/Address'
 
 interface BlockInfoViewProps {
   blockNumber: number,
@@ -15,18 +14,30 @@ interface BlockInfoViewProps {
   gasLimit: number
 }
 
-const TdTitle = ({ children } : {children: ReactNode}) => <Text component="td" weight={700}>{children}</Text>
-
 function BlockInfoView(props: BlockInfoViewProps) {
   const [isTransactionsOpened, setIsTransactionsOpened] = useState(false)
 
+  const toggleTransactionsButton = (
+    <Button
+      compact
+      variant="light"
+      ml="xs"
+      onClick={() => setIsTransactionsOpened((isOpened) => !isOpened)}
+    >
+      {isTransactionsOpened ? 'Hide' : 'Show'}
+    </Button>
+  )
+
   const transactionsList = props.transactions.map((transaction) => (
-    <Link key={transaction} href={`/transactions/${transaction}`}>
-      <Box>
-        <Button compact variant="subtle">
-          <List.Item>{transaction}</List.Item>
-        </Button>
-      </Box>
+    <Link key={transaction} href={`/transactions/${transaction}`} passHref>
+      <a>
+        <Box>
+          <Button compact variant="subtle">
+            <List.Item>{transaction}</List.Item>
+          </Button>
+        </Box>
+      </a>
+
     </Link>
   ))
 
@@ -43,8 +54,7 @@ function BlockInfoView(props: BlockInfoViewProps) {
             <TdTitle>Transactions</TdTitle>
             <td>
               {props.transactions.length} transactions
-              {props.transactions.length > 0
-                && <Button ml="xs" compact variant="light" onClick={() => setIsTransactionsOpened((o) => !o)}>{isTransactionsOpened ? 'Hide' : 'Show'}</Button>}
+              {props.transactions.length > 0 && toggleTransactionsButton}
               <Collapse in={isTransactionsOpened}>
                 <List>{transactionsList}</List>
               </Collapse>

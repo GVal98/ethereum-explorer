@@ -1,9 +1,7 @@
 import Link from 'next/link'
-import {
-  Table, Button, Text, Title,
-} from '@mantine/core'
-import { ReactNode } from 'react'
-import { Address } from '../common/Address'
+import { Table, Button, Title } from '@mantine/core'
+import { TdTitle } from '@common/TdTitle'
+import { Address } from '@common/Address'
 
 interface TransactionInfoViewProps {
   transactionHash: string,
@@ -12,8 +10,6 @@ interface TransactionInfoViewProps {
   receiver: string | null,
   ethSent: number
 }
-
-const TdTitle = ({ children } : {children: ReactNode}) => <Text component="td" weight={700}>{children}</Text>
 
 function TransactionInfoView(props: TransactionInfoViewProps) {
   return (
@@ -29,7 +25,9 @@ function TransactionInfoView(props: TransactionInfoViewProps) {
             <TdTitle>Block number</TdTitle>
             <td>
               <Link href={`/blocks/${props.blockNumber}`}>
-                <Button compact variant="light">{props.blockNumber}</Button>
+                <a>
+                  <Button compact variant="light">{props.blockNumber}</Button>
+                </a>
               </Link>
             </td>
           </tr>
