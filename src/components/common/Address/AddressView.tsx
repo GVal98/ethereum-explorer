@@ -6,8 +6,15 @@ interface AddressViewProps {
 }
 
 function AddressView(props: AddressViewProps) {
-  if (props.ethBalance !== null) return <>{props.address}<Badge ml="xs" variant="outline">{props.ethBalance} ETH</Badge></>
-  return <>{props.address}<Badge ml="xs" variant="outline">Loading</Badge></>
+  return (
+    <>
+      {props.address}
+      <Badge ml="xs" variant="outline">
+        {props.ethBalance ? `${props.ethBalance} ETH` : 'Loading' }
+      </Badge>
+
+    </>
+  )
 }
 
 export { AddressView }
