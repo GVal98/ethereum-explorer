@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { BlocksTable } from '@components/BlocksTable'
+import { BlocksTable } from 'components/BlocksTable'
 
 const Home: NextPage = () => (
   <>

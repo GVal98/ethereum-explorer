@@ -4,7 +4,7 @@ import { Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query
 import type { DehydratedState } from '@tanstack/react-query'
 import Web3 from 'web3'
 import { ColorScheme, ColorSchemeProvider, MantineProvider } from '@mantine/core'
-import { Layout } from '@components/Layout'
+import { Layout } from 'components/Layout'
 import { Web3Provider } from '../api/Web3Provider'
 
 function MyApp({ Component, pageProps }: AppProps<{ dehydratedState: DehydratedState }>) {

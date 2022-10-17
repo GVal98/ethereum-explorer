@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { BlockInfo } from '@components/BlockInfo'
+import { BlockInfo } from 'components/BlockInfo'
 
 const BlockPage: NextPage = () => {
   const router = useRouter()
