@@ -1,11 +1,8 @@
-import {
-  useContext, useState, useRef, useEffect,
-} from 'react'
+import { useContext, useState, useRef, useEffect } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import {
-  Center, Divider, Loader,
-} from '@mantine/core'
+import { Divider } from '@mantine/core'
 import { useIntersection } from '@mantine/hooks'
+import { Loader } from '@common/Loader'
 import { Web3Context } from '../../api/Web3Provider'
 import { BlockRow } from './BlockRow'
 import { BlocksTableView } from './BlocksTableView'
@@ -27,7 +24,7 @@ function BlocksTable() {
     if (entry?.isIntersecting) setBlocksCount(blocksCount + defaultBlocksCount)
   }, [entry?.isIntersecting, blocksCount])
 
-  if (!latestBlockNumber) return <Center><Loader /></Center>
+  if (!latestBlockNumber) return <Loader />
 
   const blockNumbers = new Array(blocksCount).fill(0).map((_, i) => latestBlockNumber - i)
   const blockRows = blockNumbers.map((blockNumber) => (
