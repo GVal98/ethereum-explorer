@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 import { forwardRef, useContext, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { Autocomplete, SelectItemProps } from '@mantine/core'
+import { Anchor, Autocomplete, SelectItemProps } from '@mantine/core'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Address } from '../../common/Address'
@@ -9,10 +9,12 @@ import { Web3Context } from '../../../api/Web3Provider'
 
 const ResultBlock = forwardRef<HTMLDivElement, SelectItemProps>(
   ({ value, ...others } : SelectItemProps, ref) => (
-    <Link href={`/blocks/${value}`}>
-      <div role="button" tabIndex={0} ref={ref} {...others} onMouseDown={() => {}}>
-        Block {value}
-      </div>
+    <Link href={`/blocks/${value}`} passHref>
+      <Anchor variant="text">
+        <div role="button" tabIndex={0} ref={ref} {...others} onMouseDown={() => {}}>
+          Block {value}
+        </div>
+      </Anchor>
     </Link>
   ),
 )
@@ -21,10 +23,12 @@ const ResultBlock = forwardRef<HTMLDivElement, SelectItemProps>(
 // где-то там ещё передавать не эелементы а только нужные номера но это хз
 const ResultTransaction = forwardRef<HTMLDivElement, SelectItemProps>(
   ({ value, ...others } : SelectItemProps, ref) => (
-    <Link href={`/transactions/${value}`}>
-      <div role="button" tabIndex={0} ref={ref} {...others} onMouseDown={() => {}}>
-        Transaction {value}
-      </div>
+    <Link href={`/transactions/${value}`} passHref>
+      <Anchor variant="text">
+        <div role="button" tabIndex={0} ref={ref} {...others} onMouseDown={() => {}}>
+          Transaction {value}
+        </div>
+      </Anchor>
     </Link>
   ),
 )

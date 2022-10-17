@@ -1,9 +1,7 @@
 import { ReactNode } from 'react'
-import {
-  AppShell, Header, Group, ActionIcon, useMantineColorScheme, Title, Container,
+import { AppShell, Header, Group, ActionIcon, useMantineColorScheme, Title, Container, Anchor,
 } from '@mantine/core'
 import Link from 'next/link'
-import styles from './Layout.module.css'
 import { Search } from './Search'
 
 interface LayoutProps {
@@ -19,8 +17,10 @@ function Layout(props: LayoutProps) {
       header={(
         <Header height={60}>
           <Group sx={{ height: '100%' }} px={20} position="apart">
-            <Link href="/">
-              <Title className={styles.link} order={1} size="h3">ETH Explorer</Title>
+            <Link href="/" passHref>
+              <Anchor variant="text">
+                <Title order={1} size="h3">ETH Explorer</Title>
+              </Anchor>
             </Link>
             <ActionIcon variant="default" onClick={() => toggleColorScheme()} size={30}>
               {colorScheme === 'dark' ? '☀️' : '🌚' }
