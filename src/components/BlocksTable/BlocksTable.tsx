@@ -1,9 +1,8 @@
-import { useContext, useState, useRef, useEffect } from 'react'
-import { useQuery } from '@tanstack/react-query'
+import { useState, useRef, useEffect } from 'react'
 import { Divider } from '@mantine/core'
 import { useIntersection } from '@mantine/hooks'
 import { Loader } from '@common/Loader'
-import { Web3Context } from '../../api/Web3Provider'
+import { useLatestBlockNumber } from 'web3/hooks'
 import { BlockRow } from './BlockRow'
 import { BlocksTableView } from './BlocksTableView'
 
@@ -12,8 +11,7 @@ const defaultBlocksCount = 15
 function BlocksTable() {
   const [blocksCount, setBlocksCount] = useState(defaultBlocksCount)
 
-  const web3 = useContext(Web3Context)
-  const { data: latestBlockNumber } = useQuery(['latestBlockNumber'], () => web3.eth.getBlockNumber())
+  const { data: latestBlockNumber } = useLatestBlockNumber()
 
   const containerRef = useRef()
   const { ref, entry } = useIntersection({

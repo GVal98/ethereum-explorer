@@ -1,8 +1,6 @@
-import { useContext } from 'react'
-import { useQuery } from '@tanstack/react-query'
 import { Skeleton } from '@mantine/core'
 import { formatTime } from 'utils/formatTime'
-import { Web3Context } from '../../../api/Web3Provider'
+import { useBlock } from 'web3/hooks'
 import { BlockRowView } from './BlockRowView'
 
 interface BlockRowProps {
@@ -10,8 +8,7 @@ interface BlockRowProps {
 }
 
 function BlockRow(props: BlockRowProps) {
-  const web3 = useContext(Web3Context)
-  const { data } = useQuery(['block', props.blockNumber], () => web3.eth.getBlock(props.blockNumber))
+  const { data } = useBlock(props.blockNumber)
 
   if (!data) {
     return (

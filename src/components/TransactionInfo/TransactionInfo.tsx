@@ -1,8 +1,6 @@
-import { useContext } from 'react'
-import { useQuery } from '@tanstack/react-query'
 import { Loader } from '@common/Loader'
 import { ConvertWei } from 'utils/convertWei'
-import { Web3Context } from '../../api/Web3Provider'
+import { useTransaction } from 'web3/hooks'
 import { TransactionInfoView } from './TransactionInfoView'
 
 interface TransactionInfoProps {
@@ -10,11 +8,7 @@ interface TransactionInfoProps {
 }
 
 function TransactionInfo(props: TransactionInfoProps) {
-  const web3 = useContext(Web3Context)
-  const { data } = useQuery(
-    ['transaction', props.transactionHash],
-    () => web3.eth.getTransaction(props.transactionHash),
-  )
+  const { data } = useTransaction(props.transactionHash)
 
   if (!data) return <Loader />
   return (

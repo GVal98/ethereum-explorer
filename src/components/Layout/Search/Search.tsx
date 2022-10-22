@@ -1,11 +1,10 @@
 /* eslint-disable react/display-name */
-import { forwardRef, useContext, useState } from 'react'
-import { useQuery } from '@tanstack/react-query'
+import { forwardRef, useState } from 'react'
 import { Anchor, Autocomplete, SelectItemProps } from '@mantine/core'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { Address } from '../../common/Address'
-import { Web3Context } from '../../../api/Web3Provider'
+import { useBalance, useLatestBlockNumber, useTransaction } from 'web3/hooks'
+import { Address } from '@common/Address'
 
 const ResultBlock = forwardRef<HTMLDivElement, SelectItemProps>(
   ({ value, ...others } : SelectItemProps, ref) => (
@@ -45,21 +44,9 @@ function Search() {
   const router = useRouter()
   const [value, setValue] = useState('')
 
-  const web3 = useContext(Web3Context)
-  const { data: latestBlockNumber } = useQuery(
-    ['latestBlockNumber'],
-    () => web3.eth.getBlockNumber(),
-  )
-  const { data: transaction } = useQuery(
-    ['transaction', value],
-    () => web3.eth.getTransaction(value),
-    { enabled: value.length === 66 },
-  )
-  const { data: balance } = useQuery(
-    ['address', value],
-    () => web3.eth.getBalance(value),
-    { enabled: value.length === 42 },
-  )
+  const { data: latestBlockNumber } = useLatestBlockNumber()
+  const { data: transaction } = useTransaction(value, value.length === 66)
+  const { data: balance } = useBalance(value, value.length === 42)
 
   const suggestions: any[] = []
   let ResultItem

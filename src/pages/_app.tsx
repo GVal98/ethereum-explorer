@@ -5,7 +5,7 @@ import type { DehydratedState } from '@tanstack/react-query'
 import Web3 from 'web3'
 import { ColorScheme, ColorSchemeProvider, MantineProvider } from '@mantine/core'
 import { Layout } from 'components/Layout'
-import { Web3Provider } from '../api/Web3Provider'
+import { Web3Provider } from 'web3/Web3Provider'
 
 function MyApp({ Component, pageProps }: AppProps<{ dehydratedState: DehydratedState }>) {
   const [colorScheme, setColorScheme] = useState<ColorScheme>('dark')
