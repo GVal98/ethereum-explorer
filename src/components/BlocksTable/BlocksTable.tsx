@@ -1,26 +1,13 @@
-import { useState, useRef, useEffect } from 'react'
 import { Divider } from '@mantine/core'
-import { useIntersection } from '@mantine/hooks'
 import { Loader } from '@common/Loader'
 import { useLatestBlockNumber } from 'web3/hooks'
 import { BlockRow } from './BlockRow'
 import { BlocksTableView } from './BlocksTableView'
-
-const defaultBlocksCount = 15
+import { useInfiniteScroll } from './hooks'
 
 function BlocksTable() {
-  const [blocksCount, setBlocksCount] = useState(defaultBlocksCount)
-
+  const { blocksCount, targetRef, containerRef } = useInfiniteScroll(15)
   const { data: latestBlockNumber } = useLatestBlockNumber()
-
-  const containerRef = useRef()
-  const { ref, entry } = useIntersection({
-    root: containerRef.current,
-  })
-
-  useEffect(() => {
-    if (entry?.isIntersecting) setBlocksCount(blocksCount + defaultBlocksCount)
-  }, [entry?.isIntersecting, blocksCount])
 
   if (!latestBlockNumber) return <Loader />
 
@@ -30,9 +17,9 @@ function BlocksTable() {
   ))
 
   return (
-    <div ref={containerRef.current}>
+    <div ref={containerRef}>
       <BlocksTableView blockRows={blockRows} />
-      <Divider ref={ref} />
+      <Divider ref={targetRef} />
     </div>
   )
 }
