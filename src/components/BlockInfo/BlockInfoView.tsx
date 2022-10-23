@@ -32,8 +32,8 @@ function BlockInfoView(props: BlockInfoViewProps) {
     <Link key={transaction} href={`/transactions/${transaction}`} passHref>
       <a>
         <Box>
-          <Button compact variant="subtle">
-            <List.Item>{transaction}</List.Item>
+          <Button sx={{ height: 'min-content', overflowWrap: 'anywhere' }} variant="subtle">
+            <List.Item mr="lg">{transaction}</List.Item>
           </Button>
         </Box>
       </a>

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Table, Button, Title } from '@mantine/core'
+import { Table, Button, Title, Text } from '@mantine/core'
 import { TdTitle } from '@common/TdTitle'
 import { Address } from '@common/Address'
 
@@ -14,12 +14,16 @@ interface TransactionInfoViewProps {
 function TransactionInfoView(props: TransactionInfoViewProps) {
   return (
     <>
-      <Title order={2} size="h4">Transaction {props.transactionHash}</Title>
+      <Title order={2} size="h4" sx={{ overflowWrap: 'anywhere' }}>
+        Transaction {props.transactionHash}
+      </Title>
       <Table verticalSpacing="md" horizontalSpacing="xs">
         <tbody>
           <tr>
             <TdTitle>Transaction hash</TdTitle>
-            <td>{props.transactionHash}</td>
+            <td>
+              <Text span sx={{ overflowWrap: 'anywhere' }}>{props.transactionHash}</Text>
+            </td>
           </tr>
           <tr>
             <TdTitle>Block number</TdTitle>

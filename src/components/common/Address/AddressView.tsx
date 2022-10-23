@@ -1,4 +1,4 @@
-import { Badge } from '@mantine/core'
+import { Badge, Text } from '@mantine/core'
 
 interface AddressViewProps {
   address: string,
@@ -8,11 +8,10 @@ interface AddressViewProps {
 function AddressView(props: AddressViewProps) {
   return (
     <>
-      {props.address}
-      <Badge ml="xs" variant="outline">
+      <Text span mr="xs" sx={{ wordBreak: 'break-all' }}>{props.address}</Text>
+      <Badge variant="outline">
         {props.ethBalance ? `${props.ethBalance} ETH` : 'Loading' }
       </Badge>
-
     </>
   )
 }
