@@ -1,7 +1,8 @@
 import Link from 'next/link'
-import { Table, Button, Title, Text } from '@mantine/core'
+import { Table, Button, Text } from '@mantine/core'
 import { TdTitle } from '@common/TdTitle'
 import { Address } from '@common/Address'
+import { PageTitle } from '@common/PageTitle'
 
 interface TransactionInfoViewProps {
   transactionHash: string,
@@ -14,9 +15,7 @@ interface TransactionInfoViewProps {
 function TransactionInfoView(props: TransactionInfoViewProps) {
   return (
     <>
-      <Title order={2} size="h4" sx={{ overflowWrap: 'anywhere' }}>
-        Transaction {props.transactionHash}
-      </Title>
+      <PageTitle>Transaction {props.transactionHash}</PageTitle>
       <Table verticalSpacing="md" horizontalSpacing="xs">
         <tbody>
           <tr>

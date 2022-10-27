@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
-import { Table, Title } from '@mantine/core'
+import { Table } from '@mantine/core'
+import { PageTitle } from '@common/PageTitle'
 
 interface BlocksTableViewProps {
   blockRows: ReactNode[]
@@ -8,7 +9,7 @@ interface BlocksTableViewProps {
 function BlocksTableView(props: BlocksTableViewProps) {
   return (
     <>
-      <Title order={2} size="h4">Latest blocks</Title>
+      <PageTitle>Latest blocks</PageTitle>
       <Table verticalSpacing="md" horizontalSpacing="xs" highlightOnHover>
         <thead>
           <tr>

@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import Link from 'next/link'
-import { Button, Collapse, Table, List, Box, Title } from '@mantine/core'
+import { Button, Collapse, Table, List, Box } from '@mantine/core'
 import { TdTitle } from '@common/TdTitle'
 import { Address } from '@common/Address'
+import { PageTitle } from '@common/PageTitle'
 
 interface BlockInfoViewProps {
   blockNumber: number,
@@ -37,13 +38,12 @@ function BlockInfoView(props: BlockInfoViewProps) {
           </Button>
         </Box>
       </a>
-
     </Link>
   ))
 
   return (
     <>
-      <Title order={2} size="h4">Block {props.blockNumber}</Title>
+      <PageTitle>Block {props.blockNumber}</PageTitle>
       <Table verticalSpacing="md" horizontalSpacing="xs">
         <tbody>
           <tr>
