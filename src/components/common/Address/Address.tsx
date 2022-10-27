@@ -12,7 +12,7 @@ function Address(props: AddressProps) {
   return (
     <AddressView
       address={props.address}
-      ethBalance={balance ? ConvertWei(balance) : null}
+      ethBalance={balance !== undefined ? ConvertWei(balance) : undefined}
     />
   )
 }
