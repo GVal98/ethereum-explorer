@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { Autocomplete } from '@mantine/core'
-import { useSuggestion } from './hooks'
+import { useResult } from './hooks'
 import { Result } from './Result'
 
 function Search() {
   const router = useRouter()
   const [value, setValue] = useState('')
 
-  const suggestion = useSuggestion(value)
+  const result = useResult(value)
 
   return (
     <Autocomplete
@@ -17,7 +17,7 @@ function Search() {
       onChange={(input) => setValue(input.trim())}
       label="Search"
       placeholder="Block number, transaction hash or address"
-      data={suggestion}
+      data={result}
       itemComponent={Result}
       mb="xl"
     />
