@@ -17,6 +17,7 @@ Live demo: https://ethereum-explorer-gval98.vercel.app/
 - React Query
 - Mantine UI
 - TypeScript
+- Cypress
 
 ![Screenshot](https://i.ibb.co/7rR5Xj2/eth-explorer-2.jpg)
 
@@ -28,6 +29,6 @@ Live demo: https://ethereum-explorer-gval98.vercel.app/
 
 Install: `npm install` `npm run prepare`
 
-Dev server: `npm run dev`
+Dev Server: `npm run dev`
 
 Prod Server: `npm run build` `npm start`
