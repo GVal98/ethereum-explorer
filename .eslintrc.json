@@ -1,5 +1,5 @@
 {
-  "extends": ["airbnb", "next/core-web-vitals"],
+  "extends": ["airbnb", "next/core-web-vitals", "plugin:cypress/recommended"],
   "rules": {
     "semi": ["error", "never"],
     "import/extensions": ["error", "never"],
@@ -13,6 +13,7 @@
     "react/jsx-no-useless-fragment": "off",
     "object-curly-newline": "off",
     "jsx-a11y/anchor-is-valid": "off",
-    "react/require-default-props": "off"
+    "react/require-default-props": "off",
+    "import/no-extraneous-dependencies": "off"
   }
 }
